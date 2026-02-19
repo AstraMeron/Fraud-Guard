@@ -13,6 +13,9 @@ flask
 flask-cors
 gunicorn
 requests
+streamlit
+plotly
+
 
 # --- Testing & Quality ---
 pytest
