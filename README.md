@@ -1,31 +1,8 @@
 # 🛡️ Fraud-Guard: Production-Grade Fraud Detection
 ## Business Problem
 
-In the modern financial landscape, transaction fraud costs billions annually and compromises user trust. Most institutions rely on outdated, rigid rules that fail to catch sophisticated behavioral shifts. **Fraud-Guard** addresses this by identifying high-risk transactions in real-time, balancing the need for security with the necessity of a seamless customer experience.
-
----
-
-## 🚀 Solution Overview
-
-**Fraud-Guard** is an end-to-end Machine Learning as a Service (MaaS) platform. It uses a Random Forest Ensemble architecture trained on engineered behavioral features like transaction velocity and account maturity.  
-
-The system includes:
-- A **Flask API** for real-time inference  
-- A **Streamlit Dashboard** for business stakeholders to visualize risk  
-- **SHAP explainability** to interpret model decisions  
-
----
-
-## 📊 Key Results
-
-- **99% Precision**  
-  When the model flags fraud, it is almost certainly correct—minimizing false positives and customer friction.
-
-- **8.5% Performance Boost**  
-  The Random Forest ensemble increased the **AUC-PR score** from **0.82 (Baseline)** to **0.89**.
-
-- **0.5s Latency**  
-  Real-time IP-to-country mapping and prediction processing for immediate decision support.
+## 🛡️ Project Overview
+This project is a high-performance, end-to-end fraud detection system. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
 
 
 ## 🚀 Key Features
