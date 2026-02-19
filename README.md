@@ -1,4 +1,4 @@
-# 🛡️ Fraud-Guard: Production-Grade Fraud Detection
+8# 🛡️ Fraud-Guard: Production-Grade Fraud Detection
 ## Business Problem
 
 ## 🛡️ Project Overview
@@ -124,9 +124,6 @@ Check out the interactive dashboard at **http://localhost:8501** to test real-ti
 
 - **Deep Learning**  
   Implement RNNs/LSTMs to analyze temporal sequences of user behavior.
-
-- **CI/CD Integration**  
-  Automate model retraining and deployment using GitHub Actions.
 
 - **Cloud Scaling**  
   Deploy the API using Kubernetes to handle high-volume transaction bursts.
