@@ -1,9 +1,32 @@
 # 🛡️ Fraud-Guard: Production-Grade Fraud Detection
+## Business Problem
 
-## 🛡️ Project Overview
-This project is a high-performance, end-to-end fraud detection system developed for the 10 Academy KAIM training. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
+In the modern financial landscape, transaction fraud costs billions annually and compromises user trust. Most institutions rely on outdated, rigid rules that fail to catch sophisticated behavioral shifts. **Fraud-Guard** addresses this by identifying high-risk transactions in real-time, balancing the need for security with the necessity of a seamless customer experience.
 
-The system is designed with a focus on **Engineering Excellence**, moving from research notebooks to a fully containerized "Model as a Service" (MaaS) architecture.
+---
+
+## 🚀 Solution Overview
+
+**Fraud-Guard** is an end-to-end Machine Learning as a Service (MaaS) platform. It uses a Random Forest Ensemble architecture trained on engineered behavioral features like transaction velocity and account maturity.  
+
+The system includes:
+- A **Flask API** for real-time inference  
+- A **Streamlit Dashboard** for business stakeholders to visualize risk  
+- **SHAP explainability** to interpret model decisions  
+
+---
+
+## 📊 Key Results
+
+- **99% Precision**  
+  When the model flags fraud, it is almost certainly correct—minimizing false positives and customer friction.
+
+- **8.5% Performance Boost**  
+  The Random Forest ensemble increased the **AUC-PR score** from **0.82 (Baseline)** to **0.89**.
+
+- **0.5s Latency**  
+  Real-time IP-to-country mapping and prediction processing for immediate decision support.
+
 
 ## 🚀 Key Features
 
@@ -92,4 +115,49 @@ To verify the API is processing features correctly—specifically checking for *
 
 ```bash
 python tests/test_api.py
+```
+## 📊 Business Impact & Insights
+This dashboard translates complex ML metrics into actionable business intelligence for stakeholders:
 
+* **Financial Protection:** Real-time identification of high-risk transactions to prevent chargebacks and fraud-related losses.
+* **Operational Transparency:** Uses **SHAP** values to explain why a specific transaction was flagged, reducing "black-box" distrust for auditors.
+* **Strategic Mapping:** Visualizes fraud geography to help security teams focus resources on high-risk regions.
+
+
+## 🎥 Demo
+
+Check out the interactive dashboard at **http://localhost:8501** to test real-time fraud probing!
+
+---
+
+## ⚙️ Technical Details
+
+- **Data**  
+  Sourced from financial transaction logs; preprocessed using `pandas.merge_asof` for IP-to-Country mapping and **SMOTE** to handle class imbalance (Fraud vs. Legit).
+
+- **Model**  
+  Random Forest Classifier with 100 estimators; optimized for high precision.
+
+- **Evaluation**  
+  Validated using **5-fold Stratified Cross-Validation** (Mean F1: 0.71) and **AUC-PR** to focus on the minority fraud class.
+
+---
+
+## 🔮 Future Improvements
+
+- **Deep Learning**  
+  Implement RNNs/LSTMs to analyze temporal sequences of user behavior.
+
+- **CI/CD Integration**  
+  Automate model retraining and deployment using GitHub Actions.
+
+- **Cloud Scaling**  
+  Deploy the API using Kubernetes to handle high-volume transaction bursts.
+
+---
+
+## 👤 Author
+
+**Meron Tilahun**  
+- LinkedIn: https://linkedin.com/in/meron-tilahun-3a17b324b  
+- GitHub: https://github.com/AstraMeron
