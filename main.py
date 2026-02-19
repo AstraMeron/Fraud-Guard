@@ -1,6 +1,6 @@
 import pandas as pd
 import logging
-# Added save_model to the imports
+import os
 from src.preprocessing import clean_data, convert_to_datetime, map_ip_to_country, scale_and_encode
 from src.feature_engineering import create_time_features, create_transaction_velocity
 from src.model_training import (
@@ -9,10 +9,12 @@ from src.model_training import (
     train_baseline_model,
     train_ensemble_model,
     perform_cross_validation,
-    save_model  # <--- Added this
+    save_model
 )
+# Task 3 Imports [cite: 103]
+from src.explainability import plot_feature_importance, run_shap_analysis
 
-# Set up logging for the main execution
+# Set up logging for the main execution 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def main():
@@ -50,15 +52,27 @@ def main():
     # --- 7. Task 2: Cross-Validation ---
     cv_scores = perform_cross_validation(ensemble_model, X, y)
 
-    # --- 8. Save Models (New Step) ---
-    # This saves your models so you don't have to retrain for Task 3
+    # --- 8. Save Models ---
     save_model(baseline_model, 'baseline_logistic_model.pkl')
     save_model(ensemble_model, 'random_forest_model.pkl')
 
     print("\n" + "="*30)
     print("ALL MODELING TASKS COMPLETE")
     print("Models saved in /models directory")
-    print("Ready for Task 3: Explainability and SHAP")
+    print("="*30 + "\n")
+
+    # --- 9. Task 3: Model Explainability ---
+    logging.info("Starting Task 3: Explainability Analysis...")
+    feature_names = X.columns.tolist()
+
+    plot_feature_importance(ensemble_model, feature_names)
+
+    # Note: We now pass y_test to help find specific TP, FP, FN cases
+    run_shap_analysis(ensemble_model, X_test, y_test)
+
+    print("\n" + "="*30)
+    print("TASK 3: GLOBAL EXPLAINABILITY COMPLETE")
+    print("Check reports/figures/ for visualizations")
     print("="*30)
 
 if __name__ == "__main__":
