@@ -1,4 +1,5 @@
 # 🛡️ Fraud-Guard: Production-Grade Fraud Detection
+## Business Problem
 
 ## 🛡️ Project Overview
 This project is a high-performance, end-to-end fraud detection system. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
@@ -91,4 +92,49 @@ To verify the API is processing features correctly—specifically checking for *
 
 ```bash
 python tests/test_api.py
+```
+## 📊 Business Impact & Insights
+This dashboard translates complex ML metrics into actionable business intelligence for stakeholders:
 
+* **Financial Protection:** Real-time identification of high-risk transactions to prevent chargebacks and fraud-related losses.
+* **Operational Transparency:** Uses **SHAP** values to explain why a specific transaction was flagged, reducing "black-box" distrust for auditors.
+* **Strategic Mapping:** Visualizes fraud geography to help security teams focus resources on high-risk regions.
+
+
+## 🎥 Demo
+
+Check out the interactive dashboard at **http://localhost:8501** to test real-time fraud probing!
+
+---
+
+## ⚙️ Technical Details
+
+- **Data**  
+  Sourced from financial transaction logs; preprocessed using `pandas.merge_asof` for IP-to-Country mapping and **SMOTE** to handle class imbalance (Fraud vs. Legit).
+
+- **Model**  
+  Random Forest Classifier with 100 estimators; optimized for high precision.
+
+- **Evaluation**  
+  Validated using **5-fold Stratified Cross-Validation** (Mean F1: 0.71) and **AUC-PR** to focus on the minority fraud class.
+
+---
+
+## 🔮 Future Improvements
+
+- **Deep Learning**  
+  Implement RNNs/LSTMs to analyze temporal sequences of user behavior.
+
+- **CI/CD Integration**  
+  Automate model retraining and deployment using GitHub Actions.
+
+- **Cloud Scaling**  
+  Deploy the API using Kubernetes to handle high-volume transaction bursts.
+
+---
+
+## 👤 Author
+
+**Meron Tilahun**  
+- LinkedIn: https://linkedin.com/in/meron-tilahun-3a17b324b  
+- GitHub: https://github.com/AstraMeron
