@@ -1,9 +1,8 @@
 # 🛡️ Fraud-Guard: Production-Grade Fraud Detection
 
 ## 🛡️ Project Overview
-This project is a high-performance, end-to-end fraud detection system developed for the 10 Academy KAIM training. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
+This project is a high-performance, end-to-end fraud detection system. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
 
-The system is designed with a focus on **Engineering Excellence**, moving from research notebooks to a fully containerized "Model as a Service" (MaaS) architecture.
 
 ## 🚀 Key Features
 
