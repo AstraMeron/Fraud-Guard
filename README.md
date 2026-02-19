@@ -1,9 +1,13 @@
-# Fraud-Guard: Production-Grade Fraud Detection
+# 🛡️ Fraud-Guard: Production-Grade Fraud Detection
 
 ## 🛡️ Project Overview
-This project is a high-performance fraud detection system developed for the 10 Academy KAIM training. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns.
+This project is a high-performance, end-to-end fraud detection system developed for the 10 Academy KAIM training. It identifies fraudulent transactions by analyzing user behavior, geolocation data, and transaction patterns using a **Random Forest** architecture. 
 
-## 🚀 Key Features (Task 1 Complete)
+The system is designed with a focus on **Engineering Excellence**, moving from research notebooks to a fully containerized "Model as a Service" (MaaS) architecture.
+
+## 🚀 Key Features
+
+### **Task 1 & 2: Data Engineering & Modeling**
 - **Production Structure:** Refactored from notebooks into a modular Python package (`src/` architecture).
 - **Efficient Geolocation:** Implemented range-based IP-to-Country mapping using `pandas.merge_asof`, optimized for large datasets.
 - **Feature Engineering:** - Transaction velocity (frequency per user).
@@ -11,47 +15,81 @@ This project is a high-performance fraud detection system developed for the 10 A
   - Account maturity (Time since signup).
 - **Imbalance Handling:** Applied **SMOTE** to handle class imbalance (Fraud vs. Legit), ensuring the model doesn't ignore minority fraud cases.
 
-## 📂 Project Structure
-```text
-├── data/
-│   └── raw/            # Original datasets (Fraud_Data, IpAddress, CreditCard)
-├── src/
-│   ├── preprocessing.py      # Cleaning and Geolocation mapping
-│   ├── feature_engineering.py # Time and Velocity features
-│   └── model_training.py      # SMOTE and imbalance handling
-├── main.py             # Entry point to run the full pipeline
-├── requirements.txt    # Project dependencies
-└── .gitignore          # Keeps data and env files out of Git
+### **Task 3: Model Explainability**
+- **Transparency:** Integrated **SHAP** and **LIME** to provide global and local transparency.
+- **Visualization:** Exported feature importance plots to help stakeholders understand "why" a transaction was flagged.
 
+### **Task 4: Model-as-a-Service (MaaS)**
+- **Flask API:** A RESTful API providing real-time predictions.
+- **Schema Alignment:** Robust preprocessing pipeline within the API to ensure incoming JSON data matches training feature names and order.
+- **Containerization:** Ready-to-deploy `Dockerfile` for consistent environments.
 
-# 🛠️ Installation & Usage
-
-### 1. Prerequisites
-- Python 3.9+
-- Git
+### **Task 5: Interactive Dashboard**
+- **Streamlit Frontend:** A professional dashboard for real-time fraud probing.
+- **Business Impact:** Integrated metrics showing "Estimated Savings" and "Fraud Prevention" rates.
+- **Interactive Visuals:** Dynamic Plotly charts for exploring fraud geography and SHAP explainability.
 
 ---
 
-### 2. Setup Environment
+## 📂 Project Structure
+```text
+├── data/               # Raw and processed datasets
+├── models/             # Serialized (.pkl) trained models
+├── reports/            # SHAP/LIME visualization exports
+├── src/                # Modular logic (Preprocessing, Features, Training)
+├── tests/              # Integration tests (test_api.py)
+├── dashboard.py        # Streamlit Frontend
+├── serve_model.py      # Flask API Backend
+├── requirements.txt    # Project dependencies
+├── Dockerfile          # Containerization config
+└── .gitignore          # Keeps data and env files out of Git
+```
+# 🛠️ Installation & Usage
 
-Clone the repository and set up the virtual environment:
+### 1. Prerequisites
+- **Python 3.9+**
+- **Git**
+- **Virtual Environment Tool** (venv)
+
+### 2. Setup Environment
+Clone the repository and set up your local environment to ensure all dependencies are isolated.
 
 ```bash
 # Clone the repository
-git clone https://github.com/AstraMeron/Fraud-Guard
-```
-```bash
+git clone [https://github.com/AstraMeron/Fraud-Guard](https://github.com/AstraMeron/Fraud-Guard)
 cd Fraud-Guard
-```
-# Create virtual environment
-```bash
+
+# Create a virtual environment
 python -m venv venv
-```
-# Activate the environment (Windows)
-```bash
-venv\Scripts\activate
-```
-# Activate the environment (Mac/Linux)
-```bash
+
+# Activate the environment
+# On Windows:
+.\venv\Scripts\activate
+# On Mac/Linux:
 source venv/bin/activate
+
+# Install all project dependencies
+pip install -r requirements.txt
 ```
+### 3. Running the Fraud-Guard System
+The system operates using a **Client-Server architecture**. You must have the API (Backend) running for the Dashboard (Frontend) to function.
+
+#### **Step A: Start the Backend (Flask API)**
+Open a terminal and run the model server. This loads the Random Forest model and prepares the `/predict` endpoint.
+```bash
+python serve_model.py
+```
+#### **Step B: Start the Frontend (Streamlit Dashboard)**
+Open a **second terminal**, activate your virtual environment, and launch the interactive UI. This dashboard acts as the consumer for your Flask API.
+```bash
+# Ensure your venv is active in this terminal too
+streamlit run dashboard.py
+```
+*The dashboard will automatically open in your default browser at `http://localhost:8501`. If it doesn't, you can manually navigate to that address.*
+
+### 4. Running Integration Tests
+To verify the API is processing features correctly—specifically checking for **schema alignment** and **feature parity**—run the automated test script:
+
+```bash
+python tests/test_api.py
+
