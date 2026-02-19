@@ -1,4 +1,4 @@
-8# 🛡️ Fraud-Guard: Production-Grade Fraud Detection
+🛡️ Fraud-Guard: Production-Grade Fraud Detection
 ## Business Problem
 
 ## 🛡️ Project Overview
