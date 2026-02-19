@@ -1,3 +1,4 @@
+# --- Core Data Science & ML ---
 pandas
 numpy
 matplotlib
@@ -6,5 +7,12 @@ scikit-learn
 imblearn
 shap
 joblib
+
+# --- API & Deployment ---
 flask
+flask-cors
+gunicorn
+requests
+
+# --- Testing & Quality ---
 pytest
